@@ -1,0 +1,170 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #131313;
+  --color-ember: #ff3b18;
+  --color-ember-dim: #c22a10;
+  /*
+   * Text-only tint of ember. Ember is 5.6:1 on ink at full strength, so any
+   * dimming of it drops body copy under WCAG AA. Flame is 7.7:1 at full, which
+   * leaves room to dim and stay readable.
+   *   flame/85 -> 5.8:1   body copy
+   *   flame/75 -> 4.7:1   small uppercase labels
+   * Use ember for display type and accents. Use flame for anything you read.
+   */
+  --color-flame: #ff7a5c;
+  --color-bone: #f4f0ec;
+
+  --font-display: 'Playfair Display', ui-serif, Georgia, serif;
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html {
+    background: var(--color-ink);
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-ink);
+    color: var(--color-ember);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-ember);
+    color: var(--color-ink);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ember-dim);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-ember);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Scroll-reveal — driven by IntersectionObserver in useReveal() */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .clip-reveal {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .clip-reveal.is-visible {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /*
+   * Hero portrait scrims. Kept here rather than as Tailwind arbitrary values
+   * because the stop positions are the whole point: the fade must finish early
+   * so it darkens only the strip under the name, leaving the subject clear.
+   */
+  .hero-scrim {
+    background-image: linear-gradient(
+      to right,
+      var(--color-ink) 0%,
+      color-mix(in srgb, var(--color-ink) 70%, transparent) 28%,
+      transparent 58%
+    );
+  }
+
+  .hero-scrim-bottom {
+    background-image: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-ink) 55%, transparent) 0%,
+      transparent 55%
+    );
+  }
+
+  /* Brushed metal panel behind the hero type — server-rack texture, in CSS. */
+  .brushed {
+    background-image: repeating-linear-gradient(
+      102deg,
+      rgb(255 255 255 / 0.022) 0px,
+      rgb(255 255 255 / 0.022) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    mask-image: linear-gradient(to right, #000 0%, #000 34%, transparent 72%);
+  }
+
+  .marquee-track {
+    animation: marquee 32s linear infinite;
+  }
+
+  /* Travelling dash on the hero overlay lines — reads as a data stream. */
+  .data-flow {
+    animation: data-flow 7s linear infinite;
+  }
+
+  @keyframes data-flow {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: -120;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .noise::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .clip-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+  .marquee-track,
+  .data-flow {
+    animation: none !important;
+  }
+}

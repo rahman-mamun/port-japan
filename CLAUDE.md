@@ -149,3 +149,48 @@ Deploys to Vercel as a static build. `vercel.json` sets `framework: vite`, `buil
 `.env.local` holds only `VERCEL_OIDC_TOKEN`, written by the Vercel CLI. It is gitignored (`*.local`). The app never reads it.
 
 `README.md` still documents Firebase Hosting and Cloud Run as the deploy targets. That is stale — Vercel is the live one.
+
+## Working style
+
+Source: [Prompting Claude Opus 5](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5)
+
+### Response length
+
+Keep responses focused and brief. Keep caveats short. Spend most of the response on the answer. When asked to explain, give a high-level summary unless I ask for depth.
+
+### Progress updates
+
+- Before the first tool call, say in one sentence what you are about to do.
+- While working, update me only on an important finding or a change of direction.
+- When you finish, lead with the outcome. The first sentence answers "what happened". Detail after it.
+
+### Written files
+
+Match the length of a file you write to what the task needs. Cover the substance. No filler sections, no repeated summaries, no boilerplate.
+
+### Task scope
+
+Deliver what was asked, at the scope asked. Make routine judgment calls yourself. Check in only when two readings of the request lead to different work. If the request looks wrong, say so in one sentence and continue as asked. Do not quietly narrow, widen, or change the task. Finish the whole task. Stop short of work clearly beyond the ask.
+
+### Verification
+
+- Do not add a separate verification step unless I ask.
+- Do not double-check or re-verify your own answer as a ritual.
+- Do not use a subagent to check your own work.
+- In this repo the only real check is `npm run typecheck`. Run it once after a change. That is enough.
+
+### Subagents
+
+Delegate only for a large task that is genuinely independent and parallel, such as a wide multi-file investigation. Do not delegate work you can finish in a handful of tool calls. If one subagent is enough, use one. Keep spawn counts low.
+
+### Self-correction
+
+Correct an earlier statement only when the error would change my code, conclusions, or decisions. State the correction plainly and briefly, then continue. For a slip that changes nothing, fix it and move on without noting it.
+
+### Code review
+
+Report every issue you find. Do not filter by severity on your own. I filter in a second pass. Only say "high severity only" if I ask for it.
+
+### Effort
+
+Use `low` and `medium` effort freely where quality holds. Step up to `xhigh` only for hard coding and agent work.

@@ -62,7 +62,7 @@ export const profile = {
   kicker: 'Cloud & DevOps Portfolio',
   role: 'Cloud Engineer & DevOps Specialist',
   company: 'Louhi Networks Oy',
-  location: 'Helsinki, Finland',
+  location: 'Espoo, Finland',
   email: 'mamun.rahman@louhi.fi',
   tagline:
     'I build and run production cloud platforms — GCP, Firebase and Cloud Run — and the CI/CD that ships them safely.',

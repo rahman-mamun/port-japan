@@ -54,7 +54,7 @@ Three hooks in `src/hooks/`, no animation library:
 - `useScrollProgress()` — 0→1 document scroll, throttled to `requestAnimationFrame`. Drives the top progress bar in `Nav`.
 - `useActiveSection(ids)` — picks the section with the highest intersection ratio. Drives nav link highlighting.
 
-All three guard `typeof IntersectionObserver === 'undefined'` so the code is SSR/prerender safe.
+The two observer hooks (`useReveal`, `useActiveSection`) guard `typeof IntersectionObserver === 'undefined'` so the code is SSR/prerender safe. `useScrollProgress` touches `document`/`window` only inside `useEffect`, which never runs on the server.
 
 The animation itself is CSS in `src/styles/index.css`, not JS. Hooks only toggle the `is-visible` class.
 
@@ -84,7 +84,16 @@ Rule: if a person reads it, it is flame. If it is display type or an accent, it 
 
 Declaring a colour in `@theme` generates the utilities (`bg-ink`, `text-ember`, `border-ember/10`, …). To add a colour, add a `--color-*` variable there — do not create a config file.
 
-Custom utilities also live in `index.css` under `@layer utilities`: `.font-display`, `.reveal`, `.clip-reveal`, `.marquee-track`, `.noise` (fixed grain overlay applied on the root div in `App.tsx`).
+Custom utilities also live in `index.css` under `@layer utilities`:
+
+| Utility | Purpose |
+| ------- | ------- |
+| `.font-display` | Playfair Display |
+| `.reveal` / `.clip-reveal` | the two scroll-in animations, toggled by `useReveal` |
+| `.hero-scrim` / `.hero-scrim-bottom` | the two hero photo gradients (stop positions matter — see The hero) |
+| `.brushed` | diagonal server-rack texture behind the hero type |
+| `.marquee-track` / `.data-flow` | the two infinite animations |
+| `.noise` | fixed grain overlay, applied on the root div in `App.tsx` |
 
 `@media (prefers-reduced-motion: reduce)` at the bottom of the file disables every reveal and the marquee. Any new animation must be added to that block.
 
@@ -132,3 +141,11 @@ Things that are load-bearing here:
 - All data interfaces use `readonly` fields and `readonly T[]` arrays.
 
 Components are named exports (`export function About()`), not default exports. Only `App.tsx` has a default export.
+
+## Deployment
+
+Deploys to Vercel as a static build. `vercel.json` sets `framework: vite`, `buildCommand: npm run build`, `outputDirectory: dist`. Nothing else is configured — there is no serverless function, no env var the app reads at runtime.
+
+`.env.local` holds only `VERCEL_OIDC_TOKEN`, written by the Vercel CLI. It is gitignored (`*.local`). The app never reads it.
+
+`README.md` still documents Firebase Hosting and Cloud Run as the deploy targets. That is stale — Vercel is the live one.

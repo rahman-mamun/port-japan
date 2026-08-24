@@ -33,7 +33,7 @@ function EducationRow({ item, delay }: RowProps) {
       ref={ref}
       className="reveal group grid gap-4 border-b border-ember/15 py-8 transition-colors hover:bg-ember/[0.04] md:grid-cols-12 md:items-baseline md:gap-8"
     >
-      <span className="text-[0.68rem] tracking-[0.22em] text-flame/75 uppercase md:col-span-2">
+      <span className="text-[0.7rem] tracking-[0.22em] text-flame/75 uppercase sm:text-[0.68rem] md:col-span-2">
         {item.period}
       </span>
       <div className="md:col-span-5">
@@ -44,7 +44,7 @@ function EducationRow({ item, delay }: RowProps) {
           {item.institution}
         </p>
       </div>
-      <p className="text-sm leading-relaxed text-flame/85 md:col-span-5">{item.detail}</p>
+      <p className="text-sm leading-relaxed text-flame/85 sm:text-base md:col-span-5">{item.detail}</p>
     </li>
   );
 }

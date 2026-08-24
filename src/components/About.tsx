@@ -31,7 +31,7 @@ export function About() {
         {stats.map((stat) => (
           <div key={stat.label} className="bg-ink p-6 sm:p-8">
             <p className="font-display text-4xl font-black text-ember sm:text-5xl">{stat.value}</p>
-            <p className="mt-3 text-[0.68rem] leading-relaxed tracking-[0.12em] text-flame/75 uppercase">
+            <p className="mt-3 text-[0.7rem] leading-relaxed tracking-[0.12em] text-flame/75 uppercase sm:text-[0.68rem]">
               {stat.label}
             </p>
           </div>

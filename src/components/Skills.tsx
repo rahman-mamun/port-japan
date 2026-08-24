@@ -10,7 +10,7 @@ export function Skills() {
     <Section id="skills" index="05">
       <div ref={titleRef} className="reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <SectionTitle>Skills</SectionTitle>
-        <p className="max-w-sm text-sm leading-relaxed text-flame/85">
+        <p className="max-w-sm text-sm leading-relaxed text-flame/85 sm:text-base">
           The stack I reach for daily — and the practice around it that keeps production quiet.
         </p>
       </div>
@@ -37,7 +37,7 @@ function SkillCard({ group, delay }: SkillCardProps) {
       <h3 className="font-display text-xl font-bold text-ember">{group.title}</h3>
       <ul className="mt-5 space-y-2">
         {group.items.map((item) => (
-          <li key={item} className="flex items-start gap-2.5 text-sm text-flame/85">
+          <li key={item} className="flex items-start gap-2.5 text-sm text-flame/85 sm:text-base">
             <span className="mt-[0.55rem] inline-block h-1 w-1 shrink-0 rounded-full bg-ember/60" />
             {item}
           </li>

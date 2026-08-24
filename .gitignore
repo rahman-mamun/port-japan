@@ -1,7 +1,27 @@
+# dependencies
 node_modules
+
+# build output
 dist
-.DS_Store
-*.local
 .vite
+
+# os
+.DS_Store
+Thumbs.db
+
+# secrets - never commit these
+.env
+.env.*
+*.local
+.npmrc
+*.pem
+*.key
+serviceAccount*.json
+credentials*.json
+
+# keep the example file so others know which vars exist
+!.env.example
+
+# tooling
 .vercel
-.env*.local
+.claude/settings.local.json

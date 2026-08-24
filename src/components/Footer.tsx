@@ -8,14 +8,14 @@ export function Footer() {
     <footer className="border-t border-ember/15 px-6 py-12 sm:px-10 lg:px-20">
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
         <Monogram />
-        <div className="text-[0.65rem] tracking-[0.2em] text-flame/75 uppercase sm:text-right">
+        <div className="text-[0.7rem] tracking-[0.2em] text-flame/75 uppercase sm:text-[0.65rem] sm:text-right">
           <p>
             © {year} Mamun {profile.surname}
           </p>
           <p className="mt-1">{profile.footerLine}</p>
           <a
             href="#top"
-            className="mt-3 inline-block border-b border-ember/40 pb-0.5 transition-colors hover:text-ember"
+            className="relative mt-3 inline-block border-b border-ember/40 pb-0.5 transition-colors after:absolute after:inset-x-0 after:-inset-y-4 after:content-[''] hover:text-ember"
           >
             Back to top ↑
           </a>

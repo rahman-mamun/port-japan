@@ -12,7 +12,7 @@ export function Monogram({ className = '' }: MonogramProps) {
       <div className="font-display text-3xl font-black tracking-tight">
         {profile.monogramBottom}
       </div>
-      <div className="mt-1 font-display text-[0.6rem] tracking-[0.35em]">
+      <div className="mt-1 font-display text-[0.7rem] tracking-[0.35em] sm:text-[0.6rem]">
         {profile.monogramSub.toUpperCase()}
       </div>
     </div>

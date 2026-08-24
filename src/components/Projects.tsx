@@ -55,11 +55,11 @@ function ProjectRow({ project, flip }: ProjectRowProps) {
 
         <p className="mt-8 font-semibold text-ember">Client: {project.client}</p>
 
-        <p className="mt-4 max-w-md text-sm leading-[1.9] text-flame/85">{project.summary}</p>
+        <p className="mt-4 max-w-md text-sm leading-[1.9] text-flame/85 sm:text-base">{project.summary}</p>
 
         <ul className="mt-7 space-y-2">
           {project.highlights.map((h) => (
-            <li key={h} className="flex items-start gap-2.5 text-sm text-flame/85">
+            <li key={h} className="flex items-start gap-2.5 text-sm text-flame/85 sm:text-base">
               <span className="mt-[0.55rem] inline-block h-1 w-1 shrink-0 rounded-full bg-ember/60" />
               {h}
             </li>
@@ -70,7 +70,7 @@ function ProjectRow({ project, flip }: ProjectRowProps) {
           {project.stack.map((tech) => (
             <li
               key={tech}
-              className="border border-ember/25 px-2.5 py-1 text-[0.6rem] tracking-[0.12em] text-flame/80 uppercase"
+              className="border border-ember/25 px-2.5 py-1 text-[0.7rem] tracking-[0.12em] text-flame/80 uppercase sm:text-[0.6rem]"
             >
               {tech}
             </li>
@@ -82,7 +82,7 @@ function ProjectRow({ project, flip }: ProjectRowProps) {
             href={project.href}
             target="_blank"
             rel="noreferrer"
-            className="mt-8 inline-flex w-fit items-center gap-2 border-b border-ember pb-1 text-[0.7rem] tracking-[0.2em] text-ember uppercase transition-opacity hover:opacity-60"
+            className="relative mt-8 inline-flex w-fit items-center gap-2 border-b border-ember pb-1 text-[0.7rem] tracking-[0.2em] text-ember uppercase transition-opacity after:absolute after:inset-x-0 after:-inset-y-4 after:content-[''] hover:opacity-60"
           >
             View case study →
           </a>
@@ -92,7 +92,7 @@ function ProjectRow({ project, flip }: ProjectRowProps) {
       {/* Generative visual — the deck's radial burst, no photography needed */}
       <div
         ref={artRef}
-        className={`clip-reveal relative min-h-[16rem] overflow-hidden bg-ink md:min-h-[30rem] ${
+        className={`clip-reveal relative min-h-[10rem] overflow-hidden bg-ink md:min-h-[30rem] ${
           flip ? 'md:order-1' : ''
         }`}
       >

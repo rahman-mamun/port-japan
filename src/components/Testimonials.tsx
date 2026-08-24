@@ -46,7 +46,7 @@ function QuoteCard({ testimonial, delay }: QuoteCardProps) {
       </blockquote>
       <figcaption className="mt-8 border-t border-ember/15 pt-5">
         <p className="font-display text-lg font-bold text-ember">{testimonial.author}</p>
-        <p className="mt-1 text-[0.65rem] tracking-[0.2em] text-flame/75 uppercase">
+        <p className="mt-1 text-[0.7rem] tracking-[0.2em] text-flame/75 uppercase sm:text-[0.65rem]">
           {testimonial.role}
         </p>
       </figcaption>

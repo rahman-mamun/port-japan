@@ -65,7 +65,7 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? 'Close menu' : 'Open menu'}
-            className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] lg:hidden"
+            className="flex h-11 w-11 flex-col items-center justify-center gap-[5px] lg:hidden"
           >
             <span
               className={`block h-[2px] w-6 bg-ember transition-transform duration-300 ${
@@ -92,13 +92,13 @@ export function Nav() {
           open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
       >
-        <nav className="flex h-full flex-col items-center justify-center gap-5 px-8">
+        <nav className="flex h-full flex-col items-center justify-center gap-1 px-8">
           {nav.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               onClick={() => setOpen(false)}
-              className="text-center text-lg tracking-[0.14em] text-ember uppercase transition-opacity hover:opacity-60"
+              className="px-6 py-3 text-center text-lg tracking-[0.14em] text-ember uppercase transition-opacity hover:opacity-60"
             >
               {item.label}
             </a>

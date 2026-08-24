@@ -38,7 +38,7 @@ function ExperienceCard({ item, delay }: CardProps) {
       ref={ref}
       className="reveal flex flex-col bg-ink p-7 transition-colors duration-300 hover:bg-ink-soft sm:p-9"
     >
-      <span className="text-[0.65rem] tracking-[0.25em] text-flame/75 uppercase">
+      <span className="text-[0.7rem] tracking-[0.25em] text-flame/75 uppercase sm:text-[0.65rem]">
         {item.period}
       </span>
 
@@ -50,13 +50,13 @@ function ExperienceCard({ item, delay }: CardProps) {
         {item.employer}
       </p>
 
-      <p className="mt-6 flex-1 text-sm leading-[1.85] text-flame/85">{item.description}</p>
+      <p className="mt-6 flex-1 text-sm leading-[1.85] text-flame/85 sm:text-base">{item.description}</p>
 
       <ul className="mt-7 flex flex-wrap gap-2">
         {item.stack.map((tech) => (
           <li
             key={tech}
-            className="border border-ember/25 px-2.5 py-1 text-[0.6rem] tracking-[0.12em] text-flame/80 uppercase"
+            className="border border-ember/25 px-2.5 py-1 text-[0.7rem] tracking-[0.12em] text-flame/80 uppercase sm:text-[0.6rem]"
           >
             {tech}
           </li>

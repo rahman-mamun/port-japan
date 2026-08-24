@@ -18,7 +18,7 @@ export function Contents() {
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              className="group inline-flex items-baseline gap-3 py-1.5 text-sm tracking-[0.12em] text-flame/85 uppercase transition-colors hover:text-flame sm:text-base"
+              className="group inline-flex items-baseline gap-3 py-3 text-sm tracking-[0.12em] text-flame/85 uppercase transition-colors hover:text-flame sm:text-base"
             >
               <span className="font-display text-xs opacity-50 transition-opacity group-hover:opacity-100">
                 {item.index}

@@ -42,6 +42,18 @@
     color: var(--color-ink);
   }
 
+  /*
+   * One focus ring for the whole app. Every interactive element here styles
+   * :hover only, and hover does not exist on touch or for keyboard users.
+   * Ember on ink is 5.6:1 — past the 3:1 WCAG 1.4.11 floor for non-text
+   * contrast. The offset keeps it clear of the ember hairline borders.
+   */
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
   }

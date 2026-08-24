@@ -32,9 +32,9 @@ export function Contact() {
               href={link.href}
               target={link.href.startsWith('http') ? '_blank' : undefined}
               rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
-              className="group flex h-full flex-col justify-between gap-6 p-7 transition-colors duration-300 hover:bg-ink-soft"
+              className="group flex h-full flex-col justify-between gap-6 p-7 transition-colors duration-300 hover:bg-ink-soft active:bg-ink-soft"
             >
-              <span className="text-[0.65rem] tracking-[0.25em] text-flame/75 uppercase">
+              <span className="text-[0.7rem] tracking-[0.25em] text-flame/75 uppercase sm:text-[0.65rem]">
                 {link.label}
               </span>
               <span className="flex items-center justify-between gap-3 font-display text-lg font-bold text-ember">
@@ -48,7 +48,7 @@ export function Contact() {
         ))}
       </ul>
 
-      <p className="mt-16 text-center text-[0.65rem] tracking-[0.22em] text-flame/70 uppercase">
+      <p className="mt-16 text-center text-[0.7rem] tracking-[0.22em] text-flame/70 uppercase sm:text-[0.65rem]">
         {profile.role} · {profile.company} · {profile.location}
       </p>
     </Section>

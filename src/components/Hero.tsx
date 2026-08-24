@@ -23,6 +23,17 @@ export function Hero() {
 
       <HeroPortrait />
 
+      {/*
+        Ink floor for the lower type block. It sits between the portrait (z-0)
+        and the type (z-10). It cannot be mobile-only: at md the meta column
+        moves right and lands on the subject's shoulder, so the overlap is
+        worst exactly where a below-md scrim would have stopped.
+      */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 z-[5] h-[55%] bg-linear-to-t from-ink via-ink/85 to-transparent"
+      />
+
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div ref={kickerRef} className="reveal flex items-center gap-3 text-ember">
           <CloudMark />

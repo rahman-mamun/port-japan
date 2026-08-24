@@ -46,7 +46,7 @@ export function Nav() {
           </a>
 
           {/* desktop */}
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-4 whitespace-nowrap lg:flex xl:gap-7">
             {nav.map((item) => (
               <a
                 key={item.id}
